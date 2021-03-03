@@ -1,0 +1,329 @@
+<definitions targetNamespace="http://schemas.hp.com/SM/7" xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:cmn="http://schemas.hp.com/SM/7/Common" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://schemas.hp.com/SM/7"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/  http://schemas.xmlsoap.org/wsdl/">
+    <types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+                   elementFormDefault="qualified" targetNamespace="http://schemas.hp.com/SM/7"
+                   version="2021-02-18 Rev 0" xmlns="http://schemas.hp.com/SM/7"
+                   xmlns:cmn="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+            <xs:import namespace="http://www.w3.org/2005/05/xmlmime"
+                       schemaLocation="xmlmime.xml"/>
+            <xs:import namespace="http://schemas.hp.com/SM/7/Common"
+                       schemaLocation="common.xml"/>
+            <xs:complexType name="MegaHelpKeysType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="number" nillable="true" type="cmn:DecimalType"/>
+                </xs:sequence>
+                <xs:attribute name="query" type="xs:string" use="optional"/>
+                <xs:attribute name="updatecounter" type="xs:long" use="optional"/>
+            </xs:complexType>
+            <xs:complexType name="MegaHelpInstanceType">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Id" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="Action" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="CallBackContact" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="ContactName" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="AlternateContact" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="MenuCode" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="Title" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="Region" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="NeedTime" nillable="true" type="cmn:DateTimeType"/>
+                    <xs:element minOccurs="0" name="Description">
+                        <xs:complexType>
+                            <xs:complexContent>
+                                <xs:extension base="cmn:ArrayType">
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Description"
+                                                    type="cmn:StringType"/>
+                                    </xs:sequence>
+                                </xs:extension>
+                            </xs:complexContent>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="htmlAttr">
+                        <xs:complexType>
+                            <xs:complexContent>
+                                <xs:extension base="cmn:ArrayType">
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="htmlAttr"
+                                                    type="cmn:StringType"/>
+                                    </xs:sequence>
+                                </xs:extension>
+                            </xs:complexContent>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="add.fields">
+                        <xs:complexType>
+                            <xs:complexContent>
+                                <xs:extension base="cmn:ArrayType">
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="add.fields">
+                                            <xs:complexType>
+                                                <xs:complexContent>
+                                                    <xs:extension base="cmn:StructureType">
+                                                        <xs:sequence>
+                                                            <xs:element minOccurs="0" name="addOnAttrName"
+                                                                        nillable="true" type="cmn:StringType"/>
+                                                            <xs:element minOccurs="0" name="addOnAttrType"
+                                                                        nillable="true" type="cmn:DecimalType"/>
+                                                            <xs:element minOccurs="0" name="addOnAttrValue"
+                                                                        nillable="true" type="cmn:StringType"/>
+                                                        </xs:sequence>
+                                                    </xs:extension>
+                                                </xs:complexContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:extension>
+                            </xs:complexContent>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="CrmId" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="Sysdesc">
+                        <xs:complexType>
+                            <xs:complexContent>
+                                <xs:extension base="cmn:ArrayType">
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Sysdesc"
+                                                    type="cmn:StringType"/>
+                                    </xs:sequence>
+                                </xs:extension>
+                            </xs:complexContent>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="QuestionId" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="QuestionFormId" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="ApprovalId" nillable="true" type="cmn:StringType"/>
+                    <xs:element minOccurs="0" name="attachments" nillable="true" type="cmn:AttachmentsType"/>
+                </xs:sequence>
+                <xs:attribute name="query" type="xs:string" use="optional"/>
+                <xs:attribute name="uniquequery" type="xs:string" use="optional"/>
+                <xs:attribute name="recordid" type="xs:string" use="optional"/>
+                <xs:attribute name="updatecounter" type="xs:long" use="optional"/>
+            </xs:complexType>
+            <xs:complexType name="MegaHelpModelType">
+                <xs:sequence>
+                    <xs:element name="keys" type="MegaHelpKeysType"/>
+                    <xs:element name="instance" type="MegaHelpInstanceType"/>
+                    <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+                </xs:sequence>
+                <xs:attribute name="query" type="xs:string" use="optional"/>
+            </xs:complexType>
+            <xs:element name="RetrieveMegaHelpRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="model" type="MegaHelpModelType"/>
+                    </xs:sequence>
+                    <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+                    <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="handle" type="xs:string" use="optional"/>
+                    <xs:attribute name="count" type="xs:long" use="optional"/>
+                    <xs:attribute name="start" type="xs:long" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveMegaHelpResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="model" type="MegaHelpModelType"/>
+                        <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+                    </xs:sequence>
+                    <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+                    <xs:attribute name="message" type="xs:string" use="required"/>
+                    <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+                    <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+                    <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+                    <xs:attribute name="query" type="xs:string" use="optional"/>
+                    <xs:attribute name="handle" type="xs:string" use="optional"/>
+                    <xs:attribute name="count" type="xs:long" use="optional"/>
+                    <xs:attribute name="more" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="start" type="xs:long" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveMegaHelpKeysListRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="model" type="MegaHelpModelType"/>
+                    </xs:sequence>
+                    <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+                    <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="handle" type="xs:string" use="optional"/>
+                    <xs:attribute name="count" type="xs:long" use="optional"/>
+                    <xs:attribute name="start" type="xs:long" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveMegaHelpKeysListResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="keys" type="MegaHelpKeysType"/>
+                        <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+                    </xs:sequence>
+                    <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+                    <xs:attribute name="message" type="xs:string" use="required"/>
+                    <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+                    <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+                    <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+                    <xs:attribute name="query" type="xs:string" use="optional"/>
+                    <xs:attribute name="handle" type="xs:string" use="optional"/>
+                    <xs:attribute name="count" type="xs:long" use="optional"/>
+                    <xs:attribute name="more" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="start" type="xs:long" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveMegaHelpListRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="keys" type="MegaHelpKeysType"/>
+                    </xs:sequence>
+                    <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+                    <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="handle" type="xs:string" use="optional"/>
+                    <xs:attribute name="count" type="xs:long" use="optional"/>
+                    <xs:attribute name="start" type="xs:long" use="optional"/>
+                    <xs:attribute name="attachmentType" type="xs:long" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveMegaHelpListResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="instance" type="MegaHelpInstanceType"/>
+                        <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+                    </xs:sequence>
+                    <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+                    <xs:attribute name="message" type="xs:string" use="required"/>
+                    <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+                    <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+                    <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+                    <xs:attribute name="query" type="xs:string" use="optional"/>
+                    <xs:attribute name="handle" type="xs:string" use="optional"/>
+                    <xs:attribute name="count" type="xs:long" use="optional"/>
+                    <xs:attribute name="more" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="start" type="xs:long" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateMegaHelpRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="model" type="MegaHelpModelType"/>
+                    </xs:sequence>
+                    <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+                    <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+                    <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+                    <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateMegaHelpResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="model" type="MegaHelpModelType"/>
+                        <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+                    </xs:sequence>
+                    <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+                    <xs:attribute name="message" type="xs:string" use="required"/>
+                    <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+                    <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+                    <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+                    <xs:attribute name="query" type="xs:string" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+    <message name="RetrieveMegaHelpRequest">
+        <part element="ns:RetrieveMegaHelpRequest" name="RetrieveMegaHelpRequest"/>
+    </message>
+    <message name="RetrieveMegaHelpResponse">
+        <part element="ns:RetrieveMegaHelpResponse" name="RetrieveMegaHelpResponse"/>
+    </message>
+    <message name="RetrieveMegaHelpKeysListRequest">
+        <part element="ns:RetrieveMegaHelpKeysListRequest" name="RetrieveMegaHelpKeysListRequest"/>
+    </message>
+    <message name="RetrieveMegaHelpKeysListResponse">
+        <part element="ns:RetrieveMegaHelpKeysListResponse" name="RetrieveMegaHelpKeysListResponse"/>
+    </message>
+    <message name="RetrieveMegaHelpListRequest">
+        <part element="ns:RetrieveMegaHelpListRequest" name="RetrieveMegaHelpListRequest"/>
+    </message>
+    <message name="RetrieveMegaHelpListResponse">
+        <part element="ns:RetrieveMegaHelpListResponse" name="RetrieveMegaHelpListResponse"/>
+    </message>
+    <message name="CreateMegaHelpRequest">
+        <part element="ns:CreateMegaHelpRequest" name="CreateMegaHelpRequest"/>
+    </message>
+    <message name="CreateMegaHelpResponse">
+        <part element="ns:CreateMegaHelpResponse" name="CreateMegaHelpResponse"/>
+    </message>
+    <portType name="MHintegration">
+        <operation name="RetrieveMegaHelp">
+            <documentation/>
+            <input message="ns:RetrieveMegaHelpRequest"/>
+            <output message="ns:RetrieveMegaHelpResponse"/>
+        </operation>
+        <operation name="RetrieveMegaHelpKeysList">
+            <documentation/>
+            <input message="ns:RetrieveMegaHelpKeysListRequest"/>
+            <output message="ns:RetrieveMegaHelpKeysListResponse"/>
+        </operation>
+        <operation name="RetrieveMegaHelpList">
+            <documentation/>
+            <input message="ns:RetrieveMegaHelpListRequest"/>
+            <output message="ns:RetrieveMegaHelpListResponse"/>
+        </operation>
+        <operation name="CreateMegaHelp">
+            <documentation/>
+            <input message="ns:CreateMegaHelpRequest"/>
+            <output message="ns:CreateMegaHelpResponse"/>
+        </operation>
+    </portType>
+    <binding name="MHintegration" type="ns:MHintegration">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="RetrieveMegaHelp">
+            <soap:operation soapAction="Retrieve" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="RetrieveMegaHelpKeysList">
+            <soap:operation soapAction="RetrieveKeysList" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="RetrieveMegaHelpList">
+            <soap:operation soapAction="RetrieveList" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="CreateMegaHelp">
+            <soap:operation soapAction="Create" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="MHintegration">
+        <port binding="ns:MHintegration" name="MHintegration">
+            <soap:address location="http://fsmpp-int-ns2.megafon.ru:8080/SM/7/ws"/>
+        </port>
+    </service>
+</definitions>
